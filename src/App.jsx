@@ -9,6 +9,7 @@ function App() {
     <>
       <Header />
       <MainContent />
+      <WelcomeMessage />
       <UserProfile 
         name="Alice" 
         age={25} 
