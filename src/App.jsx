@@ -1,7 +1,6 @@
-// src/App.jsx
-import Header from './Header';
-import MainContent from './MainContent';
-import Footer from './Footer';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
 
 function App() {
