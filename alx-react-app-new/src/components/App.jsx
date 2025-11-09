@@ -1,8 +1,8 @@
-import Header from "./components/Header.jsx";
-import MainContent from "./components/MainContent.jsx";
-import Footer from "./components/Footer.jsx";
-import UserProfile from "./components/UserProfile.jsx";
-import Counter from "./components/Counter";
+import Header from "./eader.jsx";
+import MainContent from ".MainContent.jsx";
+import Footer from ".Footer.jsx";
+import UserProfile from "./UserProfile.jsx";
+import Counter from "./Counter";
 
 function App() {
   return (
