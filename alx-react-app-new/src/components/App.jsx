@@ -2,7 +2,7 @@ import Header from "./eader.jsx";
 import MainContent from ".MainContent.jsx";
 import Footer from ".Footer.jsx";
 import UserProfile from "./UserProfile.jsx";
-import Counter from "./Counter";
+import Counter from "./Counter.jsx";
 
 function App() {
   return (
