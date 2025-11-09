@@ -3,7 +3,7 @@ function UserProfile({ name, age, bio }) {
     <div style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
       <h2 style={{ color: "blue" }}>{name}</h2>
       <p>
-        Age: <strong>{age}</strong>
+        Age: <span style={{ fontWeight: 'bold' }}>{props.age}</span>
       </p>
       <p>Bio: {bio}</p>
     </div>
