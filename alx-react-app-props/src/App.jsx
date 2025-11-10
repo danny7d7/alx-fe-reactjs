@@ -1,7 +1,7 @@
 import Header from "./Header.jsx";
 import MainContent from "./MainContent.jsx";
 import Footer from "./Footer.jsx";
-import UserContext from "./UserContext.js";
+import UserContext from "./UserContext";
 import ProfilePage from "./ProfilePage";
 
 function App() {
