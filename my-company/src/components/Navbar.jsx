@@ -31,6 +31,7 @@ function Navbar() {
 
     return (
         <nav style={navStyle}>
+            <p style={{backgroundColor: 'red', justifyContent: "center"}}></p>
             <Link to="/" style={linkStyle} onMouseOver={e => Object.assign(e.currentTarget.style, linkHoverStyle)} onMouseOut={e => Object.assign(e.currentTarget.style, linkStyle)}>Home</Link>
             <span style={dividerStyle}>|</span>
             <Link to="/about" style={linkStyle} onMouseOver={e => Object.assign(e.currentTarget.style, linkHoverStyle)} onMouseOut={e => Object.assign(e.currentTarget.style, linkStyle)}>About</Link>
