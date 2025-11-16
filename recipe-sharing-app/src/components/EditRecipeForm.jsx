@@ -52,12 +52,15 @@ const EditRecipeForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    
-    if (!formData.title.trim()) {
-      setError("Title is required");
-      return;
-    }
+  e.preventDefault(); // Prevent default form submission behavior
+  
+  if (!formData.title.trim()) {
+    setError("Title is required");
+    return;
+  }
+  
+  // Rest of the function...
+};
     
     const updatedRecipe = {
       ...formData,
