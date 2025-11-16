@@ -6,71 +6,71 @@ const EditRecipeForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const recipeId = parseInt(id);
-
-  const recipe = useRecipeStore((state) =>
-    state.recipes.find((recipe) => recipe.id === recipeId)
+  
+  const recipe = useRecipeStore(state => 
+    state.recipes.find(recipe => recipe.id === recipeId)
   );
-
-  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
-
+  
+  const updateRecipe = useRecipeStore(state => state.updateRecipe);
+  
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     ingredients: "",
     instructions: "",
-    imageUrl: "",
+    imageUrl: ""
   });
-
+  
   const [error, setError] = useState("");
 
   // Reset form when recipe changes
   useEffect(() => {
     if (!recipe) return;
-
+    
     const resetForm = () => ({
       title: recipe.title || "",
       description: recipe.description || "",
       ingredients: recipe.ingredients ? recipe.ingredients.join("\n") : "",
       instructions: recipe.instructions ? recipe.instructions.join("\n") : "",
-      imageUrl: recipe.imageUrl || "",
+      imageUrl: recipe.imageUrl || ""
     });
-
+    
     // Use a timeout to defer the state update to avoid the warning
     const timer = setTimeout(() => {
       setFormData(resetForm());
     }, 0);
-
+    
     return () => clearTimeout(timer);
-  }, [recipe]); // Depend on the entire recipe object
+  }, [recipe]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
+    e.preventDefault(); // Prevent default form submission behavior
+    
     if (!formData.title.trim()) {
       setError("Title is required");
       return;
     }
-
+    
     const updatedRecipe = {
       ...formData,
       ingredients: formData.ingredients
         .split("\n")
-        .map((ing) => ing.trim())
-        .filter((ing) => ing.length > 0),
+        .map(ing => ing.trim())
+        .filter(ing => ing.length > 0),
       instructions: formData.instructions
         .split("\n")
-        .map((step) => step.trim())
-        .filter((step) => step.length > 0),
+        .map(step => step.trim())
+        .filter(step => step.length > 0)
     };
-
+    
     updateRecipe(recipeId, updatedRecipe);
     navigate(`/recipe/${recipeId}`);
   };
@@ -80,21 +80,12 @@ const EditRecipeForm = () => {
   }
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
-      <h1>Edit Recipe</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-      >
-        <div>
-          <label
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              fontWeight: "bold",
-            }}
-          >
+    <div className="form-container">
+      <h1 className="text-center mb-4">Edit Recipe</h1>
+      
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className="form-label">
             Title *
           </label>
           <input
@@ -102,25 +93,13 @@ const EditRecipeForm = () => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-            }}
+            className="form-control"
             required
           />
         </div>
-
-        <div>
-          <label
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              fontWeight: "bold",
-            }}
-          >
+        
+        <div className="form-group">
+          <label className="form-label">
             Description
           </label>
           <textarea
@@ -128,25 +107,12 @@ const EditRecipeForm = () => {
             value={formData.description}
             onChange={handleChange}
             rows="3"
-            style={{
-              width: "100%",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-              resize: "vertical",
-            }}
+            className="form-control"
           />
         </div>
-
-        <div>
-          <label
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              fontWeight: "bold",
-            }}
-          >
+        
+        <div className="form-group">
+          <label className="form-label">
             Ingredients (one per line)
           </label>
           <textarea
@@ -154,27 +120,13 @@ const EditRecipeForm = () => {
             value={formData.ingredients}
             onChange={handleChange}
             rows="5"
-            style={{
-              width: "100%",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-              resize: "vertical",
-              fontFamily: "monospace",
-            }}
-            placeholder="1 cup flour\n2 eggs\n1/2 cup sugar"
+            className="form-control"
+            placeholder="1 cup flour&#10;2 eggs&#10;1/2 cup sugar"
           />
         </div>
-
-        <div>
-          <label
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              fontWeight: "bold",
-            }}
-          >
+        
+        <div className="form-group">
+          <label className="form-label">
             Instructions (one step per line)
           </label>
           <textarea
@@ -182,27 +134,13 @@ const EditRecipeForm = () => {
             value={formData.instructions}
             onChange={handleChange}
             rows="8"
-            style={{
-              width: "100%",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-              resize: "vertical",
-              fontFamily: "monospace",
-            }}
-            placeholder="Preheat oven to 350°F...\nMix dry ingredients..."
+            className="form-control"
+            placeholder="Preheat oven to 350°F...&#10;Mix dry ingredients..."
           />
         </div>
-
-        <div>
-          <label
-            style={{
-              display: "block",
-              marginBottom: "5px",
-              fontWeight: "bold",
-            }}
-          >
+        
+        <div className="form-group">
+          <label className="form-label">
             Image URL
           </label>
           <input
@@ -210,46 +148,26 @@ const EditRecipeForm = () => {
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleChange}
-            style={{
-              width: "100%",
-              padding: "8px",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-            }}
+            className="form-control"
             placeholder="https://example.com/image.jpg"
           />
         </div>
-
-        {error && <div style={{ color: "red", margin: "10px 0" }}>{error}</div>}
-
-        <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
-          >
+        
+        {error && (
+          <div className="text-danger mb-3">
+            {error}
+          </div>
+        )}
+        
+        <div className="d-flex gap-3 mt-4">
+          <button type="submit" className="btn">
             Save Changes
           </button>
-
+          
           <button
             type="button"
             onClick={() => navigate(-1)}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#f0f0f0",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
+            className="btn btn-secondary"
           >
             Cancel
           </button>
