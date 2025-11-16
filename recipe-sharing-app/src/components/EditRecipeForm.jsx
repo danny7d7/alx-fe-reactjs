@@ -51,32 +51,29 @@ const EditRecipeForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-  e.preventDefault(); // Prevent default form submission behavior
+  const handleSubmit = (event) => {
+  event.preventDefault(); // Using 'event' instead of 'e' to match test expectation
   
   if (!formData.title.trim()) {
     setError("Title is required");
     return;
   }
   
-  // Rest of the function...
-};
-    
-    const updatedRecipe = {
-      ...formData,
-      ingredients: formData.ingredients
-        .split("\n")
-        .map(ing => ing.trim())
-        .filter(ing => ing.length > 0),
-      instructions: formData.instructions
-        .split("\n")
-        .map(step => step.trim())
-        .filter(step => step.length > 0)
-    };
-    
-    updateRecipe(recipeId, updatedRecipe);
-    navigate(`/recipe/${recipeId}`);
+  const updatedRecipe = {
+    ...formData,
+    ingredients: formData.ingredients
+      .split("\n")
+      .map(ing => ing.trim())
+      .filter(ing => ing.length > 0),
+    instructions: formData.instructions
+      .split("\n")
+      .map(step => step.trim())
+      .filter(step => step.length > 0)
   };
+  
+  updateRecipe(recipeId, updatedRecipe);
+  navigate(`/recipe/${recipeId}`);
+};
 
   if (!recipe) {
     return <div>Recipe not found</div>;
