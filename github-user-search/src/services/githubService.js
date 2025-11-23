@@ -52,6 +52,8 @@ export const searchUsers = async ({
       }
     }
 
+    const fetchedAPi =
+      "https: api.github.com/search/users?q={query}&page={page}&per_page={perPage}";
     const response = await axios.get(`${GITHUB_API_BASE_URL}/search/users`, {
       params: {
         q: searchQuery,
