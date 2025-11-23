@@ -317,7 +317,7 @@ function Search() {
                 />
               </svg>
               <p className="text-red-800 text-xl font-bold">
-                Looks like we can't find the user
+                Looks like we cant find the user
               </p>
               {error.message && (
                 <p className="text-red-600 text-sm mt-2">{error.message}</p>
