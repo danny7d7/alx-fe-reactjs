@@ -1,0 +1,152 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #24292e;
+}
+
+.app-header p {
+  color: #586069;
+  font-size: 1.1rem;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 800px;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e1e4e8;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #0366d6;
+}
+
+.search-button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background-color: #0366d6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #0256c2;
+}
+
+.search-button:active {
+  background-color: #024ea8;
+}
+
+.results-container {
+  min-height: 200px;
+  padding: 1rem;
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-message p {
+  font-size: 1.2rem;
+  color: #586069;
+}
+
+.error-message p {
+  font-size: 1.2rem;
+  color: #d73a49;
+}
+
+.user-card {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #0366d6;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  color: #24292e;
+  margin: 0;
+}
+
+.user-username {
+  font-size: 1rem;
+  color: #586069;
+  margin: 0;
+}
+
+.user-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0366d6;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  width: fit-content;
+}
+
+.user-link:hover {
+  background-color: #0256c2;
+}
+
+@media (max-width: 600px) {
+  .user-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .user-info {
+    align-items: center;
+  }
+}
