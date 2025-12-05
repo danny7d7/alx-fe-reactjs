@@ -81,9 +81,9 @@ function RecipeDetail({ recipes }) {
               <h2 className="text-2xl font-bold text-emerald-900 mb-4">
                 Preparation Steps
               </h2>
-              {recipe.steps ? (
+              {recipe.steps || recipe.instructions ? (
                 <div className="space-y-4">
-                  {recipe.steps
+                  {(recipe.steps || recipe.instructions)
                     .split("\n")
                     .filter((step) => step.trim())
                     .map((step, index) => (
