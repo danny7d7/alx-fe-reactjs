@@ -1,8 +1,29 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import initialData from "../data.json";
 
 function RecipeDetail({ recipes }) {
   const { id } = useParams();
-  const recipe = recipes.find((r) => r.id === parseInt(id));
+  const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Find recipe in props first, then fallback to initial data
+    const foundRecipe =
+      recipes.find((r) => r.id === parseInt(id)) ||
+      initialData.find((r) => r.id === parseInt(id));
+
+    setRecipe(foundRecipe || null);
+    setLoading(false);
+  }, [id, recipes]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="text-white text-xl">Loading recipe...</div>
+      </div>
+    );
+  }
 
   if (!recipe) {
     return (
