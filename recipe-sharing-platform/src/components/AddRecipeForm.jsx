@@ -91,7 +91,7 @@ function AddRecipeForm({ onClose, onSubmit }) {
               }`}
             />
             {errors.title && (
-              <p className="mt-1 text-sm text-red-500">{errors.title}</p>
+              <p className="mt-1 text-sm text-md text-red-500">{errors.title}</p>
             )}
           </div>
 
